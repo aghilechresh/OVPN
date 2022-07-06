@@ -1,0 +1,294 @@
+{
+  "dns": {
+    "hosts": {
+      "domain:googleapis.cn": "googleapis.com"
+    },
+    "servers": [
+      "8.8.8.8",
+      {
+        "address": "8.8.4.4",
+        "domains": [
+          "geosite:cn"
+        ],
+        "expectIPs": [
+          "geoip:cn"
+        ],
+        "port": 53
+      }
+    ]
+  },
+  "inbounds": [
+    {
+      "listen": "127.0.0.1",
+      "port": 10808,
+      "protocol": "socks",
+      "settings": {
+        "auth": "noauth",
+        "udp": true,
+        "userLevel": 8
+      },
+      "sniffing": {
+        "destOverride": [
+          "http",
+          "tls"
+        ],
+        "enabled": true
+      },
+      "tag": "socks"
+    },
+    {
+      "listen": "127.0.0.1",
+      "port": 10809,
+      "protocol": "http",
+      "settings": {
+        "userLevel": 8
+      },
+      "tag": "http"
+    }
+  ],
+  "log": {
+    "loglevel": "warning"
+  },
+  "outbounds": [
+    {
+      "mux": {
+        "concurrency": 8,
+        "enabled": false
+      },
+      "protocol": "shadowsocks",
+      "settings": {
+        "servers": [
+          {
+            "address": "92.223.79.5",
+            "level": 8,
+            "method": "chacha20-ietf-poly1305",
+            "ota": false,
+            "password": "mMd6MnslsrdP",
+            "port": 2324
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "tcp",
+        "security": ""
+      },
+      "tag": "proxy"
+    },
+    {
+      "protocol": "freedom",
+      "settings": {},
+      "tag": "direct"
+    },
+    {
+      "protocol": "blackhole",
+      "settings": {
+        "response": {
+          "type": "http"
+        }
+      },
+      "tag": "block"
+    }
+  ],
+  "policy": {
+    "levels": {
+      "8": {
+        "connIdle": 300,
+        "downlinkOnly": 1,
+        "handshake": 4,
+        "uplinkOnly": 1
+      }
+    },
+    "system": {
+      "statsOutboundUplink": true,
+      "statsOutboundDownlink": true
+    }
+  },
+  "routing": {
+    "domainMatcher": "mph",
+    "domainStrategy": "AsIs",
+    "rules": [
+      {
+        "ip": [
+          "8.8.8.8"
+        ],
+        "outboundTag": "proxy",
+        "port": "53",
+        "type": "field"
+      },
+      {
+        "ip": [
+          "8.8.4.4"
+        ],
+        "outboundTag": "direct",
+        "port": "53",
+        "type": "field"
+      },
+      {
+        "domain": [
+          "domain:googleapis.cn"
+        ],
+        "outboundTag": "proxy",
+        "type": "field"
+      },
+      {
+        "domain": [
+          "cloudflare.com",
+          "browserleaks.com",
+          "wetest.net",
+          "pubgmobile.com",
+          "msdkpass.com",
+          "google.com",
+          "googlevideo.com",
+          "googleadservices.com",
+          "twimg.com",
+          "ampproject.com",
+          "android.com",
+          "blogspot.com",
+          "googleapis.com",
+          "googledrive.com",
+          "userapi.com",
+          "helpshift.com",
+          "youtube.com",
+          "ytimg.com",
+          "fbcdn.net",
+          "whatsapp.com",
+          "gcloudcs.com",
+          "googletagmanager.com",
+          "midasbuy.com",
+          "nocookie.com",
+          "hongkong.com",
+          "ggpht.com",
+          "t.co",
+          "gstatic.com",
+          "fb.me",
+          "goo.gl",
+          "gvt1.com",
+          "local",
+          "localhost",
+          "instagram.com",
+          "google.com.hk",
+          "blogger.com",
+          "twimg.com",
+          "doubleclick.net",
+          "amazon.co.jp",
+          "googlehosts.org",
+          "apkpure.com",
+          "archive.org",
+          "withgoogle.com",
+          "change.org",
+          "blogger.com",
+          "cc.greatfire.org",
+          "en.greatfire.org",
+          "freebrowser.org",
+          "upload.youtube.com",
+          "youtube.com",
+          "youtu.be",
+          "au.youtube.com",
+          "ca.youtube.com",
+          "de.youtube.com",
+          "jp.youtube.com",
+          "ru.youtube.com",
+          "tw.youtube.com",
+          "uk.youtube.com",
+          "youtube-ui.l.google.com",
+          "ads.youtube.com",
+          "accounts.youtube.com",
+          "analytics.youtube.com",
+          "apiblog.youtube.com",
+          "creatoracademy.youtube.com",
+          "s.youtube.com",
+          "gdata.youtube.com",
+          "gaming.youtube.com",
+          "help.youtube.com",
+          "img.youtube.com",
+          "insight.youtube.com",
+          "stage.gdata.youtube.com",
+          "tv.youtube.com",
+          "www.youtube-nocookie.com",
+          "i1.ytimg.com",
+          "i2.ytimg.com",
+          "i3.ytimg.com",
+          "i4.ytimg.com",
+          "i9.ytimg.com",
+          "www.facebook.com",
+          "fb.me",
+          "facebook.com",
+          "api.facebook.com",
+          "apps.facebook.com",
+          "attachments.facebook.com",
+          "business.facebook.com",
+          "bigzipfiles.facebook.com",
+          "code.facebook.com",
+          "check4.facebook.com",
+          "check6.facebook.com",
+          "connect.facebook.com",
+          "d.facebook.com",
+          "developers.facebook.com",
+          "graph.facebook.com",
+          "l.facebook.com",
+          "login.facebook.com",
+          "m.facebook.com",
+          "mtouch.facebook.com",
+          "mqtt.facebook.com",
+          "mqtt-mini.facebook.com",
+          "orcart.facebook.com",
+          "pixel.facebook.com",
+          "scontent.facebook.com",
+          "ssl.facebook.com",
+          "star.facebook.com",
+          "secure.facebook.com",
+          "staticxx.facebook.com",
+          "touch.facebook.com",
+          "upload.facebook.com",
+          "vupload.facebook.com",
+          "vupload2.facebook.com",
+          "api-read.facebook.com",
+          "b-api.facebook.com",
+          "b-graph.facebook.com",
+          "s-static.facebook.com",
+          "zh-cn.facebook.com",
+          "zh-tw.facebook.com",
+          "edge-chat.facebook.com"
+        ],
+        "outboundTag": "proxy",
+        "type": "field"
+      },
+      {
+        "ip": [
+          "91.108.56.0/22",
+          "91.108.4.0/22",
+          "109.239.140.0/24",
+          "149.154.160.0/20",
+          "10.0.0.0/8",
+          "100.64.0.0/10",
+          "172.16.0.0/12",
+          "127.0.0.0/8"
+        ],
+        "outboundTag": "proxy",
+        "type": "field"
+      },
+      {
+        "ip": [
+          "geoip:private"
+        ],
+        "outboundTag": "direct",
+        "type": "field"
+      },
+      {
+        "ip": [
+          "geoip:cn"
+        ],
+        "outboundTag": "direct",
+        "type": "field"
+      },
+      {
+        "domain": [
+          "geosite:cn"
+        ],
+        "outboundTag": "direct",
+        "type": "field"
+      }
+    ]
+  },
+  "stats": {}
+}
