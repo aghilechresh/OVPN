@@ -48,7 +48,7 @@
     }
   ],
   "log": {
-    "loglevel": "warning"
+    "loglevel": "info"
   },
   "outbounds": [
     {
@@ -56,22 +56,38 @@
         "concurrency": 8,
         "enabled": false
       },
-      "protocol": "shadowsocks",
+      "protocol": "vmess",
       "settings": {
-        "servers": [
+        "vnext": [
           {
-            "address": "145.239.1.100",
-            "level": 8,
-            "method": "aes-256-gcm",
-            "ota": false,
-            "password": "g5MeD6Ft3CWlJId",
-            "port": 5004
+            "address": "146.0.42.87",
+            "port": 443,
+            "users": [
+              {
+                "alterId": 4,
+                "encryption": "",
+                "flow": "",
+                "id": "aba50dd4-5484-3b05-b14a-4661caf862d5",
+                "level": 8,
+                "security": "auto"
+              }
+            ]
           }
         ]
       },
       "streamSettings": {
-        "network": "tcp",
-        "security": ""
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "allowInsecure": false,
+          "serverName": "germany-dusseldorf.mah3Hoet.com"
+        },
+        "wsSettings": {
+          "headers": {
+            "Host": "germany-dusseldorf.mah3Hoet.com"
+          },
+          "path": "\/ws"
+        }
       },
       "tag": "proxy"
     },
@@ -97,7 +113,7 @@
   "policy": {
     "levels": {
       "8": {
-        "connIdle": 300,
+        "connIdle": 150,
         "downlinkOnly": 2,
         "handshake": 4,
         "uplinkOnly": 3
@@ -121,8 +137,7 @@
       },
       {
         "ip": [
-          "8.8.8.8",
-          "8.8.4.4"
+          "8.8.8.8"
         ],
         "outboundTag": "proxy",
         "port": "53",
@@ -130,37 +145,24 @@
       },
       {
         "domain": [
+          "dns.google",
           "google.com",
-          "shecan",
-          "free",
           "android.com",
-          "could",
-          "give",
           "github.com",
+          "dns",
+          "Facebook",
           "localhost",
           "local",
           "videogoogle.com",
+          "video",
           "xx.fbcdn",
-          "Leak",
-          "WebRTC",
-          "detection",
-          "dns.google",
-          "dns",
-          "service",
-          "server",
-          "facebook",
           "githubassets.com",
-          "samsungcloud.com",
-          "i.ytimg",
-          "api",
-          "GitHub",
           "youtube",
+          "i.ytimg",
+          "samsungcloud.com",
           "youtu.be",
-          "download",
-          "ulogs",
           "samsung",
-          "tencentgames",
-          "helpshift"
+          "Leak"
         ],
         "outboundTag": "proxy",
         "type": "field"
