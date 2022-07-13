@@ -98,9 +98,9 @@
     "levels": {
       "8": {
         "connIdle": 300,
-        "downlinkOnly": 1,
+        "downlinkOnly": 2,
         "handshake": 4,
-        "uplinkOnly": 1
+        "uplinkOnly": 3
       }
     },
     "system": {
@@ -121,7 +121,8 @@
       },
       {
         "ip": [
-          "8.8.8.8"
+          "8.8.8.8",
+          "8.8.4.4"
         ],
         "outboundTag": "proxy",
         "port": "53",
@@ -129,19 +130,16 @@
       },
       {
         "domain": [
-          "google",
-          "igamecj",
-          "gcloudcs",
-          "www",
+          "google.com",
           "shecan",
           "free",
-          "android",
+          "android.com",
           "could",
           "give",
           "github.com",
           "localhost",
           "local",
-          "video",
+          "videogoogle.com",
           "xx.fbcdn",
           "Leak",
           "WebRTC",
@@ -152,7 +150,7 @@
           "server",
           "facebook",
           "githubassets.com",
-          "samsungcloud",
+          "samsungcloud.com",
           "i.ytimg",
           "api",
           "GitHub",
