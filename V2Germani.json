@@ -126,7 +126,7 @@
   },
   "routing": {
     "domainMatcher": "mph",
-    "domainStrategy": "IPOnDemand",
+    "domainStrategy": "IPIfNonMatch",
     "rules": [
       {
         "inboundTag": [
