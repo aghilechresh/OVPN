@@ -4,7 +4,8 @@
       "domain:googleapis.cn": "googleapis.com"
     },
     "servers": [
-      "8.8.8.8"
+      "8.8.8.8",
+      "8.8.4.4"
     ]
   },
   "inbounds": [
@@ -56,38 +57,22 @@
         "concurrency": 8,
         "enabled": false
       },
-      "protocol": "vmess",
+      "protocol": "shadowsocks",
       "settings": {
-        "vnext": [
+        "servers": [
           {
-            "address": "146.0.42.87",
-            "port": 443,
-            "users": [
-              {
-                "alterId": 4,
-                "encryption": "",
-                "flow": "",
-                "id": "aba50dd4-5484-3b05-b14a-4661caf862d5",
-                "level": 8,
-                "security": "auto"
-              }
-            ]
+            "address": "93.186.201.124",
+            "level": 8,
+            "method": "chacha20-ietf-poly1305",
+            "ota": false,
+            "password": "G!yBwPWH3Vao",
+            "port": 808
           }
         ]
       },
       "streamSettings": {
-        "network": "ws",
-        "security": "tls",
-        "tlsSettings": {
-          "allowInsecure": false,
-          "serverName": "germany-dusseldorf.mah3Hoet.com"
-        },
-        "wsSettings": {
-          "headers": {
-            "Host": "germany-dusseldorf.mah3Hoet.com"
-          },
-          "path": "\/ws"
-        }
+        "network": "tcp",
+        "security": ""
       },
       "tag": "proxy"
     },
@@ -115,8 +100,8 @@
       "8": {
         "connIdle": 150,
         "downlinkOnly": 2,
-        "handshake": 4,
-        "uplinkOnly": 3
+        "handshake": 7,
+        "uplinkOnly": 4
       }
     },
     "system": {
@@ -145,24 +130,23 @@
       },
       {
         "domain": [
-          "dns.google",
           "google.com",
-          "android.com",
-          "github.com",
-          "dns",
-          "Facebook",
-          "localhost",
-          "local",
-          "videogoogle.com",
           "video",
-          "xx.fbcdn",
-          "githubassets.com",
-          "youtube",
-          "i.ytimg",
-          "samsungcloud.com",
+          "could",
+          "gvt1",
+          "download",
+          "Facebook",
+          "android",
+          "youtube.com",
           "youtu.be",
-          "samsung",
-          "Leak"
+          "fbcdn.net",
+          "fbcdn",
+          "www",
+          "local",
+          "localhast",
+          "Leak",
+          "IPv6Leak",
+          "IPv6"
         ],
         "outboundTag": "proxy",
         "type": "field"
