@@ -132,6 +132,8 @@
         "domain": [
           "videogoogle.com",
           "googleapis.com",
+          "googlesource.com",
+          "googleusercontent.com",
           "video",
           "could",
           "gvt1",
