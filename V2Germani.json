@@ -130,23 +130,15 @@
       },
       {
         "domain": [
-          "google.com",
+          "videogoogle.com",
+          "googleapis.com",
           "video",
           "could",
           "gvt1",
-          "download",
-          "Facebook",
-          "android",
+          "facebook.com",
           "youtube.com",
           "youtu.be",
-          "fbcdn.net",
-          "fbcdn",
-          "www",
-          "local",
-          "localhast",
-          "Leak",
-          "IPv6Leak",
-          "IPv6"
+          "fbcdn.net"
         ],
         "outboundTag": "proxy",
         "type": "field"
