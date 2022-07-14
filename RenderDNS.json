@@ -4,7 +4,7 @@
       "domain:googleapis.cn": "googleapis.com"
     },
     "servers": [
-      "1.1.1.1"
+      "8.8.8.8"
     ]
   },
   "inbounds": [
@@ -40,7 +40,7 @@
       "port": 10853,
       "protocol": "dokodemo-door",
       "settings": {
-        "address": "1.1.1.1",
+        "address": "8.8.8.8",
         "network": "tcp,udp",
         "port": 53
       },
@@ -56,38 +56,22 @@
         "concurrency": 8,
         "enabled": false
       },
-      "protocol": "vmess",
+      "protocol": "shadowsocks",
       "settings": {
-        "vnext": [
+        "servers": [
           {
-            "address": "146.0.42.87",
-            "port": 443,
-            "users": [
-              {
-                "alterId": 4,
-                "encryption": "",
-                "flow": "",
-                "id": "aba50dd4-5484-3b05-b14a-4661caf862d5",
-                "level": 8,
-                "security": "auto"
-              }
-            ]
+            "address": "93.186.201.124",
+            "level": 8,
+            "method": "chacha20-ietf-poly1305",
+            "ota": false,
+            "password": "G!yBwPWH3Vao",
+            "port": 808
           }
         ]
       },
       "streamSettings": {
-        "network": "ws",
-        "security": "tls",
-        "tlsSettings": {
-          "allowInsecure": false,
-          "serverName": "germany-dusseldorf.mah3Hoet.com"
-        },
-        "wsSettings": {
-          "headers": {
-            "Host": "germany-dusseldorf.mah3Hoet.com"
-          },
-          "path": "/ws"
-        }
+        "network": "tcp",
+        "security": ""
       },
       "tag": "proxy"
     },
@@ -126,7 +110,7 @@
   },
   "routing": {
     "domainMatcher": "mph",
-    "domainStrategy": "IPIfNonMatch",
+    "domainStrategy": "IPOnDemand",
     "rules": [
       {
         "inboundTag": [
@@ -137,35 +121,10 @@
       },
       {
         "ip": [
-          "1.1.1.1"
+          "8.8.8.8"
         ],
         "outboundTag": "proxy",
         "port": "53",
-        "type": "field"
-      },
-      {
-        "domain": [
-          "google",
-          "dns.google",
-          "google.com",
-          "android.com",
-          "github.com",
-          "dns",
-          "Facebook",
-          "localhost",
-          "local",
-          "videogoogle.com",
-          "video",
-          "xx.fbcdn",
-          "githubassets.com",
-          "youtube",
-          "i.ytimg",
-          "samsungcloud.com",
-          "youtu.be",
-          "samsung",
-          "Leak"
-        ],
-        "outboundTag": "proxy",
         "type": "field"
       },
       {
