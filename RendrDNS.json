@@ -1,0 +1,162 @@
+{
+  "dns": {
+    "clientIp": "115.239.211.92",
+    "hosts": {
+      "geosite:category-ads-all": "10.0.0.1",
+      "localhost": "10.0.0.1",
+      "local": "10.0.0.1",
+      "translate.googleapis.com": "10.0.0.1",
+      "update.googleapis.com": "10.0.0.1",
+      "googlevideo.com": "10.0.0.1",
+      "edge-mqtt.facebook.com": "10.0.0.1",
+      "gateway.facebook.com": "10.0.0.0",
+      "lookaside.facebook.com": "10.0.0.1",
+      "browserleaks.com": "10.0.0.1",
+      "stun.l.google.com": "10.0.0.1"
+    },
+    "servers": [
+      "8.8.8.8"
+    ]
+  },
+  "log": {
+    "loglevel": "none"
+  },
+  "outbounds": [
+    {
+      "protocol": "shadowsocks",
+      "settings": {
+        "servers": [
+          {
+            "address": "92.223.65.31",
+            "method": "chacha20-ietf-poly1305",
+            "password": "ypoq8dJBPqst",
+            "port": 29092
+          }
+        ]
+      },
+      "streamSettings": {},
+      "tag": "proxy-ep-1"
+    },
+    {
+      "protocol": "shadowsocks",
+      "settings": {
+        "servers": [
+          {
+            "address": "92.223.79.5",
+            "method": "chacha20-ietf-poly1305",
+            "password": "mMd6MnslsrdP",
+            "port": 2324
+          }
+        ]
+      },
+      "streamSettings": {},
+      "tag": "proxy-ep-2"
+    },
+    {
+      "protocol": "shadowsocks",
+      "settings": {
+        "servers": [
+          {
+            "address": "193.108.118.30",
+            "method": "aes-256-gcm",
+            "password": "KixLvKzwjekG00rm",
+            "port": 5500
+          }
+        ]
+      },
+      "streamSettings": {},
+      "tag": "proxy-ep-4"
+    },
+    {
+      "protocol": "shadowsocks",
+      "settings": {
+        "servers": [
+          {
+            "address": "62.210.113.98",
+            "method": "aes-256-gcm",
+            "password": "Y6R9pAtvxxzmGC",
+            "port": 5001
+          }
+        ]
+      },
+      "streamSettings": {},
+      "tag": "proxy-ep-5"
+    },
+    {
+      "protocol": "shadowsocks",
+      "settings": {
+        "servers": [
+          {
+            "address": "109.169.72.249",
+            "method": "chacha20-ietf-poly1305",
+            "password": "G!yBwPWH3Vao",
+            "port": 805
+          }
+        ]
+      },
+      "streamSettings": {},
+      "tag": "proxy-ep-12"
+    },
+    {
+      "protocol": "freedom",
+      "settings": {},
+      "tag": "direct"
+    },
+    {
+      "protocol": "blackhole",
+      "settings": {},
+      "tag": "block"
+    }
+  ],
+  "policy": {
+    "levels": {
+      "0": {
+        "bufferSize": 4096,
+        "connIdle": 300,
+        "downlinkOnly": 0,
+        "handshake": 4,
+        "uplinkOnly": 0
+      }
+    }
+  },
+  "routing": {
+    "balancers": [
+      {
+        "selector": [
+          "proxy-ep-1",
+          "proxy-ep-2",
+          "proxy-ep-4",
+          "proxy-ep-5",
+          "proxy-ep-12"
+        ],
+        "strategy": "latency",
+        "tag": "proxy"
+      }
+    ],
+    "domainStrategy": "IPIfNonMatch",
+    "rules": [
+      {
+        "balancerTag": "proxy",
+        "ip": [
+          "geoip:cn",
+          "geoip:private",
+          "8.8.8.0\/23",
+          "10.0.0.0\/8",
+          "1.0.0.0\/24",
+          "208.67.216.0\/21",
+          "185.65.206.189",
+          "149.112.112.0\/24"
+        ],
+        "type": "field"
+      },
+      {
+        "ip": [
+          "0.0.0.0\/0",
+          "::\/0"
+        ],
+        "outboundTag": "direct",
+        "type": "field"
+      }
+    ]
+  }
+}
